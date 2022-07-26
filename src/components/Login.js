@@ -2,9 +2,10 @@ import './Login.css';
 import { connect } from 'react-redux';
 import { authenticatedUser } from '../actions/authUser';
 import { useState } from 'react';
+import logo from '../utils/img/poll-logo.png'; // with import
 
 const Login = (props) => {
-  const [userSelected, setUserSelected] = useState(props.UsersIds[0]);
+  const [userSelected, setUserSelected] = useState('sarahedo');
   const [wrongPsw, setWrongPsw] = useState(false);
   let usersList =
     props.UsersIds.length > 0 &&
@@ -20,7 +21,7 @@ const Login = (props) => {
     setUserSelected(e.target.value);
   };
   const verifyPassword = () => {
-    var input = document.getElementById('password').value;
+    const input = document.getElementById('password').value;
     const userPassword = props.users[userSelected].password;
     if (input !== userPassword) {
       setWrongPsw(true);
@@ -28,14 +29,19 @@ const Login = (props) => {
     } else {
       setWrongPsw(false);
       props.dispatch(authenticatedUser(userSelected));
+      props.setToken(true);
     }
   };
   return (
     <div className='login-wrapper'>
-      <h1>Please Log In</h1>
+      <h1 className='gradient-text'>Employee Polls</h1>
+      <figure>
+        <img src={logo} alt='Poll' />
+      </figure>
+      <h3> Log In </h3>
       <form id='loginForm'>
         <label>
-          <p>Username</p>
+          <p>User</p>
           <select name='users' id='users' onChange={selectUser}>
             {usersList}
           </select>
@@ -44,7 +50,7 @@ const Login = (props) => {
           <p>Password</p>
           <input id='password' type='password' />
         </label>
-        <div>
+        <div className='button-container'>
           <button
             id='btnlogin'
             type='submit'
@@ -53,10 +59,12 @@ const Login = (props) => {
               e.preventDefault();
             }}
           >
-            Submit
+            Login
           </button>
-          {wrongPsw === true && <div>Wrong Password! Please login again</div>}
         </div>
+        {wrongPsw === true && (
+          <div className='error-message'>Wrong Password!</div>
+        )}
       </form>
     </div>
   );
