@@ -1,7 +1,13 @@
-import { useState } from 'react';
-import { Login } from './Login';
+import { useState, useEffect } from 'react';
+import  Login  from './Login';
+import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
 
-const App = () => {
+const App = (props) => {
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+  }, []);
+
   const [token, setToken] = useState();
 
   if (!token) {
@@ -9,4 +15,4 @@ const App = () => {
   }
   return <div> Hello World </div>;
 };
-export default App;
+export default connect()(App);
