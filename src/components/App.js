@@ -1,17 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Login from './Login';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
+import Dashboard from './Dashboard';
 
 const App = (props) => {
+  console.log(props);
+
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
-  const [token, setToken] = useState();
 
-  if (!token) {
-    return <Login setToken={setToken} />;
-  }
-  return <div> Hello World </div>;
+  return <div>{props.loading === true ? <Login/> : <Dashboard />}</div>;
 };
-export default connect()(App);
+
+const mapStateToProps = ({ authUser }) => {
+  return { loading: authUser === null };
+};
+
+export default connect(mapStateToProps)(App);

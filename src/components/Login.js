@@ -29,7 +29,7 @@ const Login = (props) => {
     } else {
       setWrongPsw(false);
       props.dispatch(authenticatedUser(userSelected));
-      props.setToken(true);
+     // props.setToken(true);
     }
   };
   return (
