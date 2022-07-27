@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
 import Login from './Login';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Dashboard from './Dashboard';
+import { Routes, Route } from 'react-router-dom';
+import Poll from './Poll';
 
 const App = (props) => {
   console.log(props);
@@ -11,7 +13,20 @@ const App = (props) => {
     props.dispatch(handleInitialData());
   }, []);
 
-  return <div>{props.loading === true ? <Login/> : <Dashboard />}</div>;
+  return (
+    <Fragment>
+      <div className='container'>
+        {props.loading === true ? (
+          <Login />
+        ) : (
+          <Routes>
+            <Route path='/' exact element={<Dashboard />} />
+            <Route path='/questions/:id' element={<Poll />} />
+          </Routes>
+        )}
+      </div>
+    </Fragment>
+  );
 };
 
 const mapStateToProps = ({ authUser }) => {
