@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
+import './Dashboard.css';
+import Question from './Question';
 
 const Dashboard = (props) => {
-
   return (
-    <div>
+    <div className='wrapper-container'>
       <h1> Dashboard</h1>
       <h3> New Questions: </h3>
       <ul className='questions-list'>
@@ -11,7 +12,7 @@ const Dashboard = (props) => {
           .filter((item) => !props.userAnswersIds.includes(item))
           .map((id) => (
             <li key={id}>
-              <div>Question ID: {id}</div>
+              <Question id={id} />
             </li>
           ))}
       </ul>
@@ -21,7 +22,7 @@ const Dashboard = (props) => {
           .filter((item) => props.userAnswersIds.includes(item))
           .map((id) => (
             <li key={id}>
-              <div>Question ID: {id}</div>
+              <Question id={id} />
             </li>
           ))}
       </ul>

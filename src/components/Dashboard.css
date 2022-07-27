@@ -1,0 +1,11 @@
+.wrapper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 10px;
+}

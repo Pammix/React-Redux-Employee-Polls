@@ -14,7 +14,7 @@ input {
   height: 35px;
 }
 
-button {
+#btnlogin {
   margin-top: 3em;
   height: 40px;
   width: 100px;

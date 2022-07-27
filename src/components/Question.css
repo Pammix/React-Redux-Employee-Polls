@@ -1,0 +1,17 @@
+.question {
+  width: 300px;
+  height: 165px;
+  border: solid 1px blueviolet;
+  text-align: center;
+}
+
+#btn-show {
+  height: 40px;
+  width: 100px;
+  color: white;
+  font-size: 16px;
+  background: blue;
+  opacity: 0.5;
+  border-radius: 8px;
+  border: solid 1px white;
+}
