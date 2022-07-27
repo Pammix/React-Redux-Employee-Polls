@@ -20,7 +20,7 @@ const App = (props) => {
           <Login />
         ) : (
           <Routes>
-            <Route path='/' exact element={<Dashboard />} />
+            <Route path='/questions' exact element={<Dashboard />} />
             <Route path='/questions/:id' element={<Poll />} />
           </Routes>
         )}

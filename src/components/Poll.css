@@ -2,7 +2,7 @@
   width: 15%;
 }
 
-#option {
+.button-option {
   margin: 2em;
   width: 400px;
   height: 40px;
@@ -11,7 +11,7 @@
   text-transform: uppercase;
 }
 
-#option:hover {
+.button-option:hover {
   border: solid 2px blueviolet;
   color: blueviolet;
 }
