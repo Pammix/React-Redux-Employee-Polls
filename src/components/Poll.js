@@ -25,11 +25,6 @@ const Poll = (props) => {
 
   const isAnswered = fristAnswerSelected || secondAnswerSelected;
 
-  const calculateAnswerStatistics = () => {
-    const peopleVotesOptionOne = props.question.optionOne.votes.length;
-    const peopleVotesOptionTwo = props.question.optionTwo.votes.length;
-  };
-
   let navigate = useNavigate();
   function clickButton(e, option) {
     e.preventDefault();
