@@ -3,7 +3,8 @@ import Login from './Login';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Dashboard from './Dashboard';
-import  NewPoll  from './NewPoll';
+import NewPoll from './NewPoll';
+import Nav from './Nav';
 import { Routes, Route } from 'react-router-dom';
 import Poll from './Poll';
 
@@ -20,11 +21,14 @@ const App = (props) => {
         {props.loading === true ? (
           <Login />
         ) : (
-          <Routes>
-            <Route path='/' exact element={<Dashboard />} />
-            <Route path='/questions/:id' element={<Poll />} />
-            <Route path='/new' exact element={<NewPoll />} />
-          </Routes>
+          <>
+            <Nav />
+            <Routes>
+              <Route path='/' exact element={<Dashboard />} />
+              <Route path='/questions/:id' element={<Poll />} />
+              <Route path='/new' exact element={<NewPoll />} />
+            </Routes>
+          </>
         )}
       </div>
     </Fragment>
