@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { handleAddQuestion } from '../actions/questions';
+import './NewPoll.css';
 
 const NewPoll = (props) => {
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ const NewPoll = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add question to store
     props.dispatch(handleAddQuestion(textOne, textTwo));
     setTextOne('');
     setTextTwo('');
@@ -29,32 +29,41 @@ const NewPoll = (props) => {
   const charLeftTwo = 100 - textTwo.length;
 
   return (
-    <div>
-      <h3> Add Your Poll </h3>
+    <div className='wrapper-container'>
+      <h1 className='gradient-text'> Add Your Own Poll </h1>
+      <h3> Would You Rather</h3>
       <form className='new-poll' onSubmit={handleSubmit}>
-        <textarea
-          className='text-area'
-          placeholder='Option One'
-          value={textOne}
-          onChange={handleChangeTextOne}
-          maxLength={100}
-        />
-        {charLeftOne <= 50 && <div className='char-left'> {charLeftOne}</div>}
-        <textarea
-          className='text-area'
-          placeholder='Option Two'
-          value={textTwo}
-          onChange={handleChangeTextTwo}
-          maxLength={200}
-        />
-        {charLeftTwo <= 50 && <div className='char-left'> {charLeftTwo}</div>}
+        <div className='text-area-wrapper'>
+          <h4 className='lable'> Option One</h4>
+          <textarea
+            className='text-area'
+            placeholder='Option One'
+            value={textOne}
+            onChange={handleChangeTextOne}
+            maxLength={100}
+          />
+          {charLeftOne <= 50 && (
+            <div className='char-left'> {charLeftOne} characters left</div>
+          )}
+          <h4 className='lable'> Option Two</h4>
+          <textarea
+            className='text-area'
+            placeholder='Option Two'
+            value={textTwo}
+            onChange={handleChangeTextTwo}
+            maxLength={200}
+          />
+          {charLeftTwo <= 50 && (
+            <div className='char-left'> {charLeftTwo} characters left</div>
+          )}
+        </div>
         <button
-          className='button'
+          className='btn-sumbit'
           type='submit'
           disabled={textOne === '' || textTwo === ''}
         >
           {' '}
-          SUBMIT{' '}
+          Add{' '}
         </button>
       </form>
     </div>

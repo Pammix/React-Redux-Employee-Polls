@@ -1,0 +1,35 @@
+.text-area-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-area {
+  width: 50vw;
+  height: 3em;
+  margin: 1em;
+  font-size: 16px;
+}
+
+.btn-sumbit {
+  height: 40px;
+  width: 120px;
+  color: white;
+  font-size: 16px;
+  background: blue;
+  opacity: 0.5;
+  border-radius: 8px;
+  border: solid 1px white;
+  margin-left: 44%;
+  margin-top: 2em;
+}
+.lable {
+  width: 50vw;
+  margin: 1em;
+  margin-top: 2em;
+}
+
+.char-left {
+  width: 50vw;
+  margin: 0 1em;
+  color: red;
+}
