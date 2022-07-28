@@ -38,3 +38,8 @@
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 }
+
+.selected {
+  border: solid 2px blueviolet;
+  color: blueviolet;
+}

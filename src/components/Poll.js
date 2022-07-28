@@ -14,8 +14,15 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 const Poll = (props) => {
-  let navigate = useNavigate();
+  const fristAnswerSelected =
+    props.question.optionOne.votes.filter((v) => v === props.authUser).length >
+    0;
 
+  const secondAnswerSelected =
+    props.question.optionTwo.votes.filter((v) => v === props.authUser).length >
+    0;
+
+  let navigate = useNavigate();
   function clickButton(e, option) {
     e.preventDefault();
     props.dispatch(
@@ -27,6 +34,7 @@ const Poll = (props) => {
     );
     navigate('/');
   }
+
   return (
     <div className='wrapper-container'>
       <h1 className='gradient-text'>Poll by {props.question.author} </h1>
@@ -36,7 +44,9 @@ const Poll = (props) => {
       <h1>Would You Rather </h1>
       <div className='option-container'>
         <button
-          className='button-option'
+          className={
+            'button-option' + (fristAnswerSelected ? ' selected ' : '')
+          }
           id='optionOne'
           onClick={(e) => {
             clickButton(e, 'optionOne');
@@ -46,7 +56,9 @@ const Poll = (props) => {
           {props.question.optionOne.text}
         </button>
         <button
-          className='button-option'
+          className={
+            'button-option' + (secondAnswerSelected ? ' selected ' : '')
+          }
           id='optionTwo'
           onClick={(e) => {
             clickButton(e, 'optionTwo');
@@ -64,6 +76,7 @@ const mapStateToProps = ({ authUser, questions, users }, props) => {
   const { id } = props.router.params;
   const question = questions[id];
   const userAvatar = users[question.author].avatarURL;
+
   return {
     id,
     userAvatar,
