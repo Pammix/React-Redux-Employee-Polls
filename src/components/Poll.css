@@ -43,3 +43,15 @@
   border: solid 2px blueviolet;
   color: blueviolet;
 }
+
+.statistics-wrapper {
+  text-align: center;
+}
+
+.padding {
+  padding-right: 2em;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}

@@ -14,6 +14,7 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 const Poll = (props) => {
+  console.log(props.question);
   const fristAnswerSelected =
     props.question.optionOne.votes.filter((v) => v === props.authUser).length >
     0;
@@ -21,6 +22,13 @@ const Poll = (props) => {
   const secondAnswerSelected =
     props.question.optionTwo.votes.filter((v) => v === props.authUser).length >
     0;
+
+  const isAnswered = fristAnswerSelected || secondAnswerSelected;
+
+  const calculateAnswerStatistics = () => {
+    const peopleVotesOptionOne = props.question.optionOne.votes.length;
+    const peopleVotesOptionTwo = props.question.optionTwo.votes.length;
+  };
 
   let navigate = useNavigate();
   function clickButton(e, option) {
@@ -67,6 +75,33 @@ const Poll = (props) => {
           {' '}
           {props.question.optionTwo.text}
         </button>
+        {isAnswered && (
+          <div className='statistics-wrapper'>
+            <h3>Statistics : </h3>
+            <div>
+              <h4 className='text-upper'> {props.question.optionOne.text}</h4>
+              <span className='padding'>
+                People votes :{' '}
+                <span>{props.question.optionOne.votes.length} </span>
+              </span>
+              <span>
+                Percentage :{' '}
+                {(props.question.optionOne.votes.length / 4) * 100 + '%'}
+              </span>
+            </div>
+            <div>
+              <h4 className='text-upper'> {props.question.optionTwo.text}</h4>
+              <span className='padding'>
+                People votes :{' '}
+                <span> {props.question.optionTwo.votes.length}</span>
+              </span>
+              <span>
+                Percentage :{' '}
+                {(props.question.optionTwo.votes.length / 4) * 100 + '%'}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
