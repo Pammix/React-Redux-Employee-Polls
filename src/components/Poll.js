@@ -14,9 +14,10 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 const Poll = (props) => {
+  let navigate = useNavigate();
+
   function clickButton(e, option) {
     e.preventDefault();
-    console.log(option);
     props.dispatch(
       handleSaveAnswer({
         authUser: props.authUser,
@@ -24,6 +25,7 @@ const Poll = (props) => {
         answer: option
       })
     );
+    navigate('/');
   }
   return (
     <div className='wrapper-container'>
