@@ -51,6 +51,7 @@ const Poll = (props) => {
             'button-option' + (fristAnswerSelected ? ' selected ' : '')
           }
           id='optionOne'
+          disabled={isAnswered}
           onClick={(e) => {
             clickButton(e, 'optionOne');
           }}
@@ -63,6 +64,7 @@ const Poll = (props) => {
             'button-option' + (secondAnswerSelected ? ' selected ' : '')
           }
           id='optionTwo'
+          disabled={isAnswered}
           onClick={(e) => {
             clickButton(e, 'optionTwo');
           }}

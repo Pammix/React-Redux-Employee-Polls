@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { authenticatedUser } from '../actions/authUser';
 import { useState } from 'react';
 import logo from '../utils/img/poll-logo.png'; // with import
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
+  const navigate = useNavigate();
+
   const [userSelected, setUserSelected] = useState('sarahedo');
   const [wrongPsw, setWrongPsw] = useState(false);
   let usersList =
@@ -29,7 +32,8 @@ const Login = (props) => {
     } else {
       setWrongPsw(false);
       props.dispatch(authenticatedUser(userSelected));
-     // props.setToken(true);
+      navigate('/');
+      // props.setToken(true);
     }
   };
   return (

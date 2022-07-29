@@ -3,7 +3,6 @@ import './Nav.css';
 import { connect } from 'react-redux';
 
 const Nav = (props) => {
-  console.log(props);
   const { authUser, avatar } = props;
   return (
     <nav>
@@ -24,7 +23,7 @@ const Nav = (props) => {
           </Link>
         </li>
         <li className='link' id='logout'>
-          <a href=''>Logout</a>
+          <Link to='/login'>Logout</Link>
         </li>
         <img className='userAvatar' src={avatar} alt='Author Avatar' />
         <span className='username'>{authUser} </span>
