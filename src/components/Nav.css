@@ -1,0 +1,41 @@
+nav ul {
+  padding: 0;
+  margin: 1em 3em;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+a,
+.link {
+  text-decoration: none;
+  display: block;
+  margin: 0 1em;
+  font-weight: 300;
+  color: blue;
+}
+a:hover,
+.link:hover {
+  text-decoration: none;
+  display: block;
+  margin: 0 1em;
+  color: blueviolet;
+}
+#logout {
+  margin-left: auto;
+}
+.userAvatar {
+  width: 2%;
+}
+
+.user {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.username {
+  font-weight: 600;
+}

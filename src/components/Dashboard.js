@@ -5,7 +5,7 @@ import Question from './Question';
 const Dashboard = (props) => {
   return (
     <div className='wrapper-container'>
-      <h1> Dashboard</h1>
+      <h1 className='gradient-text'> Polls Dashboard</h1>
       <h3> New Questions: </h3>
       <ul className='questions-list'>
         {props.questionsIds
