@@ -23,7 +23,8 @@ const Login = (props) => {
   const selectUser = (e) => {
     setUserSelected(e.target.value);
   };
-  const verifyPassword = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const input = document.getElementById('password').value;
     const userPassword = props.users[userSelected].password;
     if (input !== userPassword) {
@@ -32,8 +33,6 @@ const Login = (props) => {
     } else {
       setWrongPsw(false);
       props.dispatch(authenticatedUser(userSelected));
-      navigate('/');
-      // props.setToken(true);
     }
   };
   return (
@@ -43,7 +42,7 @@ const Login = (props) => {
         <img src={logo} alt='Poll' />
       </figure>
       <h3> Log In </h3>
-      <form id='loginForm'>
+      <form id='loginForm' onSubmit={handleSubmit}>
         <label>
           <p>User</p>
           <select name='users' id='users' onChange={selectUser}>
@@ -55,16 +54,7 @@ const Login = (props) => {
           <input id='password' type='password' />
         </label>
         <div className='button-container'>
-          <button
-            id='btnlogin'
-            type='submit'
-            onClick={(e) => {
-              verifyPassword();
-              e.preventDefault();
-            }}
-          >
-            Login
-          </button>
+          <input id='btnlogin' type='submit' />
         </div>
         {wrongPsw === true && (
           <div className='error-message'>Wrong Password!</div>

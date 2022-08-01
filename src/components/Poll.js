@@ -113,7 +113,8 @@ const mapStateToProps = ({ authUser, questions, users }, props) => {
     id,
     userAvatar,
     authUser,
-    question
+    question,
+    questions
   };
 };
 

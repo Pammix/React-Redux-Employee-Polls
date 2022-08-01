@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import { connect } from 'react-redux';
+import { logoutAuthUser } from '../actions/authUser';
 
 const Nav = (props) => {
   const { authUser, avatar } = props;
+
+  const logout = (e) => {
+    e.preventDefault();
+    props.dispatch(logoutAuthUser());
+  };
   return (
     <nav>
       <ul>
@@ -13,7 +19,7 @@ const Nav = (props) => {
           </Link>
         </li>
         <li>
-          <Link className='link' to='/new'>
+          <Link className='link' to='/add'>
             New Question
           </Link>
         </li>
@@ -23,7 +29,7 @@ const Nav = (props) => {
           </Link>
         </li>
         <li className='link' id='logout'>
-          <Link to='/login'>Logout</Link>
+          <button className='logout-btn' onClick={logout}>Logout</button>
         </li>
         <img className='userAvatar' src={avatar} alt='Author Avatar' />
         <span className='username'>{authUser} </span>

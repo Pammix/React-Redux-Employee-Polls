@@ -1,0 +1,9 @@
+.table-board {
+  text-align: center;
+  width: 600px;
+  margin: 2em;
+}
+
+td {
+  padding: 0.5em;
+}
