@@ -19,7 +19,7 @@ const App = (props) => {
   });
 
   if (!props.loggedIn) {
-    return <Login></Login>;
+    return <Login/>;
   }
   return (
     <Fragment>

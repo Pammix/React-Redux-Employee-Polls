@@ -1,16 +1,19 @@
 import './Login.css';
 import { connect } from 'react-redux';
-import { authenticatedUser } from '../actions/authUser';
+import { authenticatedUser, handleLogin } from '../actions/authUser';
 import { useState } from 'react';
 import logo from '../utils/img/poll-logo.png'; // with import
 import { useNavigate } from 'react-router-dom';
+import { store } from '../store';
+import authUser from '../reducers/authUser';
 
 const Login = (props) => {
   const navigate = useNavigate();
 
   const [userSelected, setUserSelected] = useState('sarahedo');
+
   const [wrongPsw, setWrongPsw] = useState(false);
-  let usersList =
+  /* let usersList =
     props.UsersIds.length > 0 &&
     props.UsersIds.map((item, i) => {
       return (
@@ -18,9 +21,9 @@ const Login = (props) => {
           {item}
         </option>
       );
-    }, this);
-
-  const selectUser = (e) => {
+    });
+*/
+  const handleselectUser = (e) => {
     setUserSelected(e.target.value);
   };
   const handleSubmit = (e) => {
@@ -33,10 +36,11 @@ const Login = (props) => {
     } else {
       setWrongPsw(false);
       props.dispatch(authenticatedUser(userSelected));
+      setUserSelected('');
     }
   };
   return (
-    <div className='login-wrapper'>
+    <div className='login-wrapper' data-testid='login-head'>
       <h1 className='gradient-text'>Employee Polls</h1>
       <figure>
         <img src={logo} alt='Poll' />
@@ -45,21 +49,26 @@ const Login = (props) => {
       <form id='loginForm' onSubmit={handleSubmit}>
         <label>
           <p>User</p>
-          <select name='users' id='users' onChange={selectUser}>
-            {usersList}
-          </select>
+          <input
+            type='text'
+            data-testid='username'
+            value={userSelected}
+            onChange={handleselectUser}
+          ></input>
         </label>
         <label>
           <p>Password</p>
-          <input id='password' type='password' />
+          <input data-testid='password' id='password' type='password' />
         </label>
         <div className='button-container'>
-          <input id='btnlogin' type='submit' />
+          <input data-testid='submit-btn' id='btnlogin' type='submit' />
         </div>
-        {wrongPsw === true && (
-          <div className='error-message'>Wrong Password!</div>
-        )}
       </form>
+      {wrongPsw === true && (
+        <div data-testid='error' className='error-message'>
+          Wrong Password!
+        </div>
+      )}
     </div>
   );
 };

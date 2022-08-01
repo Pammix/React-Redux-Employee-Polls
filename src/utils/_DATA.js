@@ -194,7 +194,6 @@ export function _saveQuestionAnswer({ authUser, qid, answer }) {
     if (!authUser || !qid || !answer) {
       reject('Please provide authedUser, qid, and answer');
     }
-    console.log(authUser);
     setTimeout(() => {
       users = {
         ...users,
