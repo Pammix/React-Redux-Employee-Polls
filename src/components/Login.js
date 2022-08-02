@@ -1,15 +1,10 @@
 import './Login.css';
 import { connect } from 'react-redux';
-import { authenticatedUser, handleLogin } from '../actions/authUser';
+import { authenticatedUser } from '../actions/authUser';
 import { useState } from 'react';
 import logo from '../utils/img/poll-logo.png'; // with import
-import { useNavigate } from 'react-router-dom';
-import { store } from '../store';
-import authUser from '../reducers/authUser';
 
 const Login = (props) => {
-  const navigate = useNavigate();
-
   const [userSelected, setUserSelected] = useState('sarahedo');
 
   const [wrongPsw, setWrongPsw] = useState(false);

@@ -1,4 +1,4 @@
-const { _saveQuestionAnswer , _saveQuestion } = require('./_DATA');
+const { _saveQuestionAnswer, _saveQuestion } = require('./_DATA');
 describe('_saveQuestion', () => {
   it('should return true for correct data', async () => {
     const question = {

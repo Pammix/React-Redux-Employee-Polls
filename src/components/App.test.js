@@ -5,6 +5,7 @@ import { store } from '../store';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { screen } from '@testing-library/react';
 
 describe('App', () => {
   it('should render the component', () => {
@@ -19,13 +20,13 @@ describe('App', () => {
     expect(view).toMatchSnapshot();
   });
   it('should render the Login component', () => {
-    const view = render(
+    render(
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>
     );
-    expect(view.queryByTestId('login-head')).toBeInTheDocument();
+    expect(screen.getByTestId('login-head')).toBeInTheDocument();
   });
 });

@@ -6,6 +6,8 @@ import React from 'react';
 import { store } from '../store';
 import '@testing-library/jest-dom';
 import { authenticatedUser } from '../actions/authUser';
+import {screen} from '@testing-library/react'
+
 describe('Login', () => {
   it('should render the component', () => {
     const view = render(
@@ -20,7 +22,7 @@ describe('Login', () => {
   });
 
   it('will display an error password is wrong', () => {
-    var view = render(
+ render(
       <Provider store={store}>
         <BrowserRouter>
           <Login />
@@ -28,11 +30,11 @@ describe('Login', () => {
       </Provider>
     );
 
-    const selectUserElement = view.getByTestId('username');
+    const selectUserElement = screen.getByTestId('username');
 
-    const passwordInputElement = view.getByTestId('password');
+    const passwordInputElement = screen.getByTestId('password');
 
-    const submitButton = view.getByTestId('submit-btn');
+    const submitButton = screen.getByTestId('submit-btn');
 
     expect(passwordInputElement).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
@@ -40,7 +42,7 @@ describe('Login', () => {
   });
 
   it('verify value of input field', () => {
-    var view = render(
+   render(
       <Provider store={store}>
         <BrowserRouter>
           <Login />
@@ -48,11 +50,11 @@ describe('Login', () => {
       </Provider>
     );
 
-    const selectUserElement = view.getByTestId('username');
+    const selectUserElement = screen.getByTestId('username');
 
-    const passwordInputElement = view.getByTestId('password');
+    const passwordInputElement = screen.getByTestId('password');
 
-    const submitButton = view.getByTestId('submit-btn');
+    const submitButton = screen.getByTestId('submit-btn');
 
     expect(passwordInputElement).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
