@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  Navigate
+} from 'react-router-dom';
 import './Poll.css';
 import { handleSaveAnswer } from '../actions/questions';
 
@@ -14,7 +19,8 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 const Poll = (props) => {
-  console.log(props.question);
+  let navigate = useNavigate();
+  if (!props.question) return <Navigate to='/404' />;
   const fristAnswerSelected =
     props.question.optionOne.votes.filter((v) => v === props.authUser).length >
     0;
@@ -25,7 +31,6 @@ const Poll = (props) => {
 
   const isAnswered = fristAnswerSelected || secondAnswerSelected;
 
-  let navigate = useNavigate();
   function clickButton(e, option) {
     e.preventDefault();
     props.dispatch(
@@ -35,7 +40,6 @@ const Poll = (props) => {
         answer: option
       })
     );
-    navigate('/');
   }
 
   return (
@@ -107,7 +111,7 @@ const Poll = (props) => {
 const mapStateToProps = ({ authUser, questions, users }, props) => {
   const { id } = props.router.params;
   const question = questions[id];
-  const userAvatar = users[question.author].avatarURL;
+  const userAvatar = users[question?.author]?.avatarURL;
 
   return {
     id,
