@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleAddQuestion } from '../actions/questions';
 import './NewPoll.css';
+import { addQuestionUser } from '../actions/users';
 
 const NewPoll = (props) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const NewPoll = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.dispatch(handleAddQuestion(textOne, textTwo));
+
     setTextOne('');
     setTextTwo('');
     navigate('/');

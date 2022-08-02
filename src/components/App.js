@@ -30,7 +30,7 @@ const App = (props) => {
           <Route path='/' element={<Dashboard />} />
           <Route path='/questions/:id' element={<Poll />} />
           <Route path='/add' exact element={<NewPoll />} />
-          <Route path='/board' exact element={<Leaderboard />} />
+          <Route path='/leaderboard' exact element={<Leaderboard />} />
           <Route path='/404' exact element={<NotFoundPage />} />
         </Routes>
       </div>

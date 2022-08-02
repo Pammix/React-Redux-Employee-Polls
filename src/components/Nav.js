@@ -24,12 +24,14 @@ const Nav = (props) => {
           </Link>
         </li>
         <li>
-          <Link className='link' to='/board'>
+          <Link className='link' to='/leaderboard'>
             Leaderboard
           </Link>
         </li>
         <li className='link' id='logout'>
-          <button className='logout-btn' onClick={logout}>Logout</button>
+          <button className='logout-btn' onClick={logout}>
+            Logout
+          </button>
         </li>
         <img className='userAvatar' src={avatar} alt='Author Avatar' />
         <span className='username'>{authUser} </span>

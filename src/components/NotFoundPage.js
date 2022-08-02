@@ -4,8 +4,8 @@ import './NotFoundPage.css';
 const NotFoundPage = () => {
   return (
     <div className='container-404'>
-      <section class='notFound'>
-        <div class='img'>
+      <section className='notFound'>
+        <div className='img'>
           <img
             src={'https://assets.codepen.io/5647096/backToTheHomepage.png'}
             alt='Back to the Homepage'
@@ -15,11 +15,11 @@ const NotFoundPage = () => {
             alt='El Delorean, El Doc y Marti McFly'
           />
         </div>
-        <div class='text'>
+        <div className='text'>
           <h1>404</h1>
           <h2>PAGE NOT FOUND</h2>
           <h3>BACK TO HOME?</h3>
-          <Link to='/' class='yes'>
+          <Link to='/' className='yes'>
             YES
           </Link>
           <a href='https://www.youtube.com/watch?v=G3AfIvJBcGo'>NO</a>
