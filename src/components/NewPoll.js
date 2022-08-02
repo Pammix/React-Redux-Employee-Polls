@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleAddQuestion } from '../actions/questions';
 import './NewPoll.css';
-import { addQuestionUser } from '../actions/users';
 
 const NewPoll = (props) => {
   const navigate = useNavigate();
